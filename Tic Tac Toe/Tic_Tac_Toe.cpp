@@ -77,13 +77,13 @@ void draw_piece(int x, int y, int a, int b, int* p, int board[3][3])
 	setlinecolor(RGB(165, 103, 207));
 
 	if (i % 2 == 1) {
-		board[x][y] = 1;	//落子x
+		board[x][y] = 1;	//落子o
 		setlinestyle(PS_SOLID, 10);
 		circle(a, b, 25);	//绘制o
 	}
 	else {
 		setlinestyle(PS_SOLID, 10);
-		board[x][y] = 2;	//落子o
+		board[x][y] = 2;	//落子x
 		line(a - 21, b - 21, a + 21, b + 21);	//绘制x
 		line(a - 21, b + 21, a + 21, b - 21);
 	}
