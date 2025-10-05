@@ -22,7 +22,7 @@ int main()
 			if (msg.message == WM_LBUTTONDOWN)	//鼠标左键点击
 			{
 				create_piece(msg.x, msg.y, board, &n);	//创建棋子
-				determine( &n, board);
+				determine(&n, board);
 				//printf("%d %d\n", msg.x, msg.y);	//输出鼠标点击位置
 
 				//for (int i = 0; i < 3; i++) {	//输出棋盘数组
@@ -33,19 +33,19 @@ int main()
 				//}
 			}
 		}
-	}	
+	}
 	closegraph();	// 关闭窗口
 	return 0;
 }
 
 void game_board()
 {
-	setbkcolor(RGB( 204,  238,  255));	//棋盘背景颜色
+	setbkcolor(RGB(204, 238, 255));	//棋盘背景颜色
 	cleardevice();
 
 	setlinecolor(RGB(148, 168, 207));	//棋盘线条颜色
 	setlinestyle(PS_SOLID, 5);	//棋盘边框宽度
-	rectangle( 25, 25, 325, 325);	//棋盘外边框
+	rectangle(25, 25, 325, 325);	//棋盘外边框
 
 	setlinestyle(PS_SOLID, 2);	//棋盘内线宽度
 	int i;
@@ -67,7 +67,7 @@ void create_piece(int i, int j, int board[3][3], int* n)
 
 	if (x < 0 || x > 2 || y < 0 || y > 2) { return; }	//超出棋盘范围检测
 	if (board[x][y] != 0) { return; }	//该位置已有棋子检测
-	draw_piece( x, y, a, b, n, board);	//落子
+	draw_piece(x, y, a, b, n, board);	//落子
 
 }
 
@@ -90,14 +90,14 @@ void draw_piece(int x, int y, int a, int b, int* p, int board[3][3])
 	*p = i + 1;	//落子次数+1
 }
 
-void determine( int const *n, int board[3][3])
+void determine(int const* n, int board[3][3])
 {
 	int i;
 	int m = *n;
 	if (m < 5) { return; }	//落子数小于5不可能分出胜负
-	for ( i = 0; i < 3; i++ ) {	//横向判断
-		if ( board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != 0 ) {
-			if ( board[i][0] == 1 ) {
+	for (i = 0; i < 3; i++) {	//横向判断
+		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != 0) {
+			if (board[i][0] == 1) {
 				create_text(_T("O获胜！"));
 				exit(0);
 			}
@@ -107,9 +107,9 @@ void determine( int const *n, int board[3][3])
 			}
 		}
 	}
-	for ( i = 0; i < 3; i++ ) {	//纵向判断
-		if ( board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != 0 ) {
-			if ( board[0][i] == 1 ) {
+	for (i = 0; i < 3; i++) {	//纵向判断
+		if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != 0) {
+			if (board[0][i] == 1) {
 				create_text(_T("O获胜！"));
 				exit(0);
 			}
@@ -119,9 +119,9 @@ void determine( int const *n, int board[3][3])
 			}
 		}
 	}
-	for ( i = 0; i < 3; i++ ) {	//左斜判断
-		if ( board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != 0 ) {
-			if ( board[0][0] == 1 ) {
+	for (i = 0; i < 3; i++) {	//左斜判断
+		if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != 0) {
+			if (board[0][0] == 1) {
 				create_text(_T("O获胜！"));
 				exit(0);
 			}
@@ -131,9 +131,9 @@ void determine( int const *n, int board[3][3])
 			}
 		}
 	}
-	for ( i = 0; i < 3; i++ ) {	//右斜判断
-		if ( board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != 0 ) {
-			if ( board[0][2] == 1 ) {
+	for (i = 0; i < 3; i++) {	//右斜判断
+		if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != 0) {
+			if (board[0][2] == 1) {
 				create_text(_T("O获胜！"));
 				exit(0);
 			}
@@ -144,7 +144,7 @@ void determine( int const *n, int board[3][3])
 		}
 	}
 
-	if ( m == 9 ) {	//平局
+	if (m == 9) {	//平局
 		create_text(_T("平局！"));
 		exit(0);
 	}
