@@ -65,7 +65,7 @@ void create_piece(int i, int j, int board[3][3], int* n)
 	int a = 25 + x * 100 + 50; //棋子中心点横坐标
 	int b = 25 + y * 100 + 50; //棋子中心点纵坐标
 
-	if (x < 0 || x > 2 || y < 0 || y > 2) { return; }	//超出棋盘范围检测
+	if (i < 25 || i > 325 || j < 25 || j > 325) { return; }	//超出棋盘范围检测
 	if (board[x][y] != 0) { return; }	//该位置已有棋子检测
 	draw_piece(x, y, a, b, n, board);	//落子
 
