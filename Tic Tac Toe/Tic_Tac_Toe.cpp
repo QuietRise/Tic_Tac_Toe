@@ -13,7 +13,7 @@ int main()
 	int n = 0;	//落子次数
 	ExMessage msg;	//鼠标消息结构体
 
-	initgraph(350, 350, 1); // 创建窗口
+	initgraph(350, 350, 0); // 创建窗口
 
 	game_board();
 	while (1) {	//循环落子
